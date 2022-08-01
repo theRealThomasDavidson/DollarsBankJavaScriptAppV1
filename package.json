@@ -1,0 +1,28 @@
+{
+  "name": "scriptbank",
+  "version": "1.0.0",
+  "description": "simple banking console app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theRealThomasDavidson/DollarsBankJavaScriptAppV1.git"
+  },
+  "keywords": [
+    "PS",
+    "C:\\Users\\david>",
+    "cd",
+    ".\\Projects\\"
+  ],
+  "author": "PS C:\\Users\\david\\Projects> mkdir scriptbank",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/theRealThomasDavidson/DollarsBankJavaScriptAppV1/issues"
+  },
+  "homepage": "https://github.com/theRealThomasDavidson/DollarsBankJavaScriptAppV1#readme",
+  "dependencies": {
+    "uuid": "^8.3.2"
+  }
+}
