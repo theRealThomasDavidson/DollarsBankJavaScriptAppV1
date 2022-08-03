@@ -1,0 +1,65 @@
+[
+  {
+    "id": "530537e3-7811-4ee5-a7c6-ac6329e601ca",
+    "name": "alice",
+    "password": "pass",
+    "accounts": [
+      {
+        "id": "85442c6e-d92c-4df0-8bb5-6af310aa07f4",
+        "acct_number": "savings",
+        "balance": 13349,
+        "transactions": [
+          {
+            "id": "0ecfada9-203d-4c2a-84ca-5c9a32f3744d",
+            "time": 1659560219955,
+            "amount": -23
+          },
+          {
+            "id": "321ade6b-2140-44e2-b0f9-cc31b4f36fba",
+            "time": 1659560257598,
+            "amount": -20
+          },
+          {
+            "id": "fca84b9f-9bb8-49d7-a3fd-ea5a880db64c",
+            "time": 1659560307863,
+            "amount": -40
+          }
+        ]
+      },
+      {
+        "id": "21e09a66-f331-4254-9530-9a2a2febd84a",
+        "acct_number": "chacking",
+        "balance": 1260,
+        "transactions": [
+          {
+            "id": "2d60b410-bb45-4695-a152-92468f4cdafc",
+            "time": 1659560293385,
+            "amount": 20
+          },
+          {
+            "id": "3d2a4120-5a74-40d5-b2b9-3b77456240c5",
+            "time": 1659560307863,
+            "amount": 40
+          },
+          {
+            "id": "8522207f-8500-4a60-8bd7-fa1eca8037cd",
+            "time": 1659560332029,
+            "amount": -34
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "b639d469-8b7f-4fcb-a8c2-38dec2471fad",
+    "name": "bob",
+    "password": "pass",
+    "accounts": []
+  },
+  {
+    "id": "7e14897a-fb91-4192-971a-2fd60f2dad99",
+    "name": "carol",
+    "password": "pass",
+    "accounts": []
+  }
+]

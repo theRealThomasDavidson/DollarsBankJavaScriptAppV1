@@ -59,8 +59,11 @@ class transaction{
     load_json(acct, json){
         var id = json["id"];
         var time = json["time"];
-        var amount = json["balance"];
+        var amount = json["amount"];
         this.init(acct,amount, time, id);
+    }
+    get as_string(){
+        return "---TRANSACTION---\namount: "+ this._amount+ "\ncustomer: "+ this.customer.name + "\naccount: "+ this.account.number+"\n-------------";
     }
 }
 
@@ -96,8 +99,8 @@ class account{
         return this._number
     }
     set customer(value) {
-        value.add_account = this;
         this._customer.remove_account= this;
+        value.add_account = this;
         this._customer = value;
     }
     set id(value) {
@@ -107,23 +110,22 @@ class account{
         this._number = value;
     }
     set amount(value) {
-        trans = new transaction();
-        trans.init(this, value - this._value);
-        this._transactions.set(trans.id, trans);
         this._amount = value;
     }
-    set delta_amount(value) {
-        console.log("");
+    delta_amount(value) {
+        let new_amount = this.amount+ value;
         var t = new transaction();
         t.init(this, value);
         this._transactions.set(t.id, t);
-        this._amount += value;
+        this.amount = new_amount;
+        return t;
     }
     set remove_transaction(trans) {
         this._transactions.delete(trans.id);
     } 
     set add_transaction(trans) {
         this._transactions.set(trans.id, trans);
+        this._amount += trans.amount;
     } 
     print(){
     }
@@ -144,13 +146,17 @@ class account{
         var id = json["id"];
         var number = json["acct_number"];
         var amount = json["balance"];
-        this.init(cust,number, amount, id);
+        this.init(cust,number, +amount, id);
         var transactions = json["transactions"];
         transactions.forEach((value) => {
             var t = new transaction();
             t.load_json(this, value);
             this.add_transaction = t;
         });
+        this._amount= json["balance"];
+    }
+    get as_string(){
+        return "====ACCOUNT====\nname: "+ this.number+ "\ncustomer: "+ this.customer.name + "\nbalance: "+ this._amount + "\n===============";
     }
 }
 class customer{
@@ -213,6 +219,9 @@ class customer{
             a.load_json(this, value);
             this.add_account= a;
         });
+    }
+    get as_string(){
+        return "####CUSTOMER####\nname: "+ this.name+ "\n# of account: "+ this.accounts.length+"/n################";
     }
 }
 
