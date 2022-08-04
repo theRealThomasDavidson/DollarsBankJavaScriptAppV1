@@ -109,9 +109,6 @@ const home_menu = async (customer, customers) =>{
             
             customers.set(customer.name, customer);
             console.log("Goodbye "+ customer.name+ "!");
-            customer.accounts.forEach((a,key)=>{
-                console.log("amount " + a.amount);
-            });
             custlist = [];
             customers.forEach((c)=>{
                 custlist.push(c.json);
@@ -168,7 +165,7 @@ const home_menu = async (customer, customers) =>{
                 achoices.set(""+ndx, a);
                 ndx += 1
             });
-            await choose_acct(achoices);
+            await choose_acct(achoices);        
             if(!achoices.has(inp)){
                 console.log("could not find account.");
                 await home_menu(customer, customers);

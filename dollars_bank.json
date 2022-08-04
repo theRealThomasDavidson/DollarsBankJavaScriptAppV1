@@ -155,14 +155,51 @@
     "password": "pass",
     "accounts": [
       {
-        "id": "1c77f0be-8679-43a4-a240-d509f7d5e2ad",
+        "id": "404c7b4e-6797-4750-acf5-93c218ebf9c1",
         "acct_number": "savings",
-        "balance": 232187,
+        "balance": 3839,
         "transactions": [
           {
-            "id": "ded2c704-b9a1-4107-b644-e7e0d2b78cf5",
-            "time": 1659629489594,
-            "amount": -2345
+            "id": "adc5bbd3-0948-4003-b9f1-457476030628",
+            "time": 1659631448789,
+            "amount": -60
+          },
+          {
+            "id": "2678d084-7e36-4999-8c32-5094ba191470",
+            "time": 1659631501558,
+            "amount": -50
+          },
+          {
+            "id": "db93fba2-44be-48d0-aa1d-17dbc1a16bde",
+            "time": 1659631519986,
+            "amount": -51
+          }
+        ]
+      },
+      {
+        "id": "4c91cc06-3583-404d-9f38-76e47dd727b8",
+        "acct_number": "checking",
+        "balance": 181,
+        "transactions": [
+          {
+            "id": "a56ceb7f-a7b9-4a40-8396-5336ccf37d91",
+            "time": 1659631428356,
+            "amount": 0
+          },
+          {
+            "id": "fb7945ee-8bd1-4c5d-b1ac-7db0a659fd3a",
+            "time": 1659631457258,
+            "amount": 30
+          },
+          {
+            "id": "99b9ebed-7ee6-4909-9ab6-918e93451257",
+            "time": 1659631501558,
+            "amount": 50
+          },
+          {
+            "id": "cf3983c9-18a0-4ad9-ac42-1d0935d4472f",
+            "time": 1659631519986,
+            "amount": 51
           }
         ]
       }
