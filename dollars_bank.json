@@ -54,12 +54,80 @@
     "id": "b639d469-8b7f-4fcb-a8c2-38dec2471fad",
     "name": "bob",
     "password": "pass",
-    "accounts": []
+    "accounts": [
+      {
+        "id": "266aafc0-7867-45dd-abe1-9a4d4843ec39",
+        "acct_number": "check",
+        "balance": 12342,
+        "transactions": []
+      }
+    ]
   },
   {
     "id": "7e14897a-fb91-4192-971a-2fd60f2dad99",
     "name": "carol",
     "password": "pass",
     "accounts": []
+  },
+  {
+    "id": "add49f5d-0c9c-4a8e-bf51-dda6a9a298a5",
+    "name": "test",
+    "password": "pass",
+    "accounts": [
+      {
+        "id": "2b1de2fd-9b19-4dd6-aefb-90c5025b39ad",
+        "acct_number": "checking",
+        "balance": 740,
+        "transactions": [
+          {
+            "id": "5200ad56-7f58-4ef5-bcca-be1386ec6c00",
+            "time": 1659565609694,
+            "amount": 54
+          },
+          {
+            "id": "3f858a9b-1a53-4def-a3e9-0792d4a18c19",
+            "time": 1659565625985,
+            "amount": 567
+          },
+          {
+            "id": "99224d65-bfdc-403a-a62d-ed81ea300071",
+            "time": 1659566492351,
+            "amount": -1
+          },
+          {
+            "id": "941037b6-1a66-49e9-80c0-587f27ec7f83",
+            "time": 1659566500753,
+            "amount": -3
+          }
+        ]
+      },
+      {
+        "id": "31ca8343-709d-49ab-b639-7f673660e1f3",
+        "acct_number": "savings",
+        "balance": 53705,
+        "transactions": [
+          {
+            "id": "09c6cfbf-5134-42b5-978e-78ee8602f43b",
+            "time": 1659565592312,
+            "amount": -54
+          },
+          {
+            "id": "44dec5a7-5643-4ee3-bb2f-c585e4fa9faf",
+            "time": 1659565625985,
+            "amount": -567
+          },
+          {
+            "id": "32a5327d-b10d-42b7-8bfa-d524660c4794",
+            "time": 1659566496106,
+            "amount": 2
+          },
+          {
+            "id": "34704da4-e4bd-4b64-8e7c-9645af5f5e19",
+            "time": 1659566500753,
+            "amount": 3
+          }
+        ]
+      }
+    ]
   }
 ]

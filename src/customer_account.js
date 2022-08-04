@@ -1,5 +1,21 @@
 var uuid = require('uuid');
 
+const to_color = (message, color)=> {
+    const colors = new Map();
+	colors.set("black", "\u001b[30m");
+    colors.set("red", "\u001b[31m");
+    colors.set("green", "\u001b[32m");
+    colors.set("yellow", "\u001b[33m");
+    colors.set("blue", "\u001b[34m");
+    colors.set("pink", "\u001b[35m");
+    colors.set("teal", "\u001b[36m");
+    colors.set("white", "\u001b[37m");
+    colors.set("reset", "\u001b[0m");
+    if(colors.has(color)){
+        return colors.get(color) + message + colors.get("reset");
+    }return  colors.get("reset") + message;
+}
+
 class transaction{
     init(account, amount, time, id){
         if(id){
@@ -63,7 +79,7 @@ class transaction{
         this.init(acct,amount, time, id);
     }
     get as_string(){
-        return "---TRANSACTION---\namount: "+ this._amount+ "\ncustomer: "+ this.customer.name + "\naccount: "+ this.account.number+"\n-------------";
+        return "---TRANSACTION---\namount: "+ to_color(this._amount, this._amount>0 ? "green": "red" )+ "\ncustomer: "+ to_color(this.customer.name,"pink") + "\naccount: "+ to_color(this.account.number,"yellow")+ "\ntime: "+ this._time+"\n-------------";
     }
 }
 
@@ -156,7 +172,7 @@ class account{
         this._amount= json["balance"];
     }
     get as_string(){
-        return "====ACCOUNT====\nname: "+ this.number+ "\ncustomer: "+ this.customer.name + "\nbalance: "+ this._amount + "\n===============";
+        return "====ACCOUNT====\nname: "+ to_color(this.number,"yellow")+ "\ncustomer: "+ to_color(this.customer.name, "pink") + "\nbalance: "+ to_color(this._amount, this._amount>0 ? "green": "red" )+ "\n===============";
     }
 }
 class customer{
@@ -221,7 +237,7 @@ class customer{
         });
     }
     get as_string(){
-        return "####CUSTOMER####\nname: "+ this.name+ "\n# of account: "+ this.accounts.length+"/n################";
+        return "####CUSTOMER####\nname: "+ to_color(this.name,"pink")+ "\n# of account: "+ this.accounts.length+"/n################";
     }
 }
 

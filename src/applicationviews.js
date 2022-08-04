@@ -1,6 +1,7 @@
 
 'use strict'
 const {EOL} = require('os');
+const { binaryInsert } = require('binary-insert');
 const readline = require('readline')
 
 const model = require("./customer_account");
@@ -17,6 +18,7 @@ const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 })
+
 
 const get_username = () => {
   return new Promise((resolve, reject) => {
@@ -63,7 +65,7 @@ const choose = (choices) => {
         })
     })
 }
-const choose__acct = (choices) => {
+const choose_acct = (choices) => {
     let message = "";
     choices.forEach((value, key) => {
         message += key + ": \n" + value.as_string + EOL;
@@ -104,6 +106,7 @@ const home_menu = async (customer, customers) =>{
     let custlist;
     switch(inp){
         case "1":
+            
             customers.set(customer.name, customer);
             console.log("Goodbye "+ customer.name+ "!");
             customer.accounts.forEach((a,key)=>{
@@ -112,9 +115,8 @@ const home_menu = async (customer, customers) =>{
             custlist = [];
             customers.forEach((c)=>{
                 custlist.push(c.json);
-            });
-            console.log(custlist[0].accounts);
-            //controller.write_to_file(custlist);
+            })
+            controller.write_to_file(custlist);
             await main_menu(customers);
         case "2":
             customer.accounts.forEach((a) =>{
@@ -128,23 +130,10 @@ const home_menu = async (customer, customers) =>{
             transactions= [];
             customer.accounts.forEach((a) =>{
                 a.transactions.forEach((t)=>{
-                    if(transactions.length <= 5){
-                        transactions.push(t);
-                        
-                    }
-                    else{
-                        for(let ndx = 0;ndx > 5; ndx += 1){
-                            if (transactions[ndx].time < t.time){    
-                                transactions.splice(ndx, 0, t);
-                                transactions = transactions.slice(4);
-                                break;
-                            }
-                        }
-                    }
+                    binaryInsert(transactions, t, (a,b)=>(a.time - b.time));
                 })
             });
-            transactions = transactions.slice(4);
-            transactions.forEach((t)=>{
+            transactions.slice(-5).forEach((t) =>{
                 console.log(t.as_string);
             })
             await home_menu(customer, customers);
@@ -185,7 +174,6 @@ const home_menu = async (customer, customers) =>{
                 achoices.set(""+ndx, a);
                 ndx += 1
             });
-            console.log(achoices);
             await choose_acct(achoices);
             if(!achoices.has(inp)){
                 console.log("could not find account.");
@@ -202,6 +190,11 @@ const home_menu = async (customer, customers) =>{
             }
             if (+amount<0) {
                 console.log("you must use a positive number for the withdrawl amount")
+                await home_menu(customer, customers);
+                break;
+            }
+            if (+amount>a.amount) {
+                console.log("you cannot overdraft this account")
                 await home_menu(customer, customers);
                 break;
             }
@@ -275,6 +268,11 @@ const home_menu = async (customer, customers) =>{
             }
             if (+amount<0) {
                 console.log("you must use a positive number for the transfer amount")
+                await home_menu(customer, customers);
+                break;
+            }
+            if (+amount>aw.amount) {
+                console.log("you cannot overdraft this account")
                 await home_menu(customer, customers);
                 break;
             }
