@@ -157,12 +157,6 @@ const home_menu = async (customer, customers) =>{
             a = new Account();
             a.init(customer, account, +amount);
             console.log("Account creation sucessful.");
-            custlist = [];
-            customers.forEach((c,key)=>{
-                custlist.push(c.json);
-            });
-            
-            controller.write_to_file(custlist);
 
             await home_menu(customer, customers);
             break;
@@ -306,7 +300,6 @@ const main_menu = async (customers) =>{
     let choices = new Map();
     choices.set("1", "new user");
     choices.set("2", "login");
-    choices.set("3", "all users");
     choices.set("0", "exit");
     await choose(choices);
     let username;
@@ -371,21 +364,6 @@ const main_menu = async (customers) =>{
         else{
             console.log("User was not found.")
         }
-        await main_menu(customers);
-        break;
-    case "3":
-        console.log("test area1")
-        console.log(
-            custlist)
-        
-        console.log("test area2")
-        console.log(customers)
-        console.log("test area3")
-        
-        console.log("test area4")
-        console.log("test area5")
-        
-        console.log("test area6")
         await main_menu(customers);
         break;
     case "0":
